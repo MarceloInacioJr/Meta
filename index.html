@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    html,
+    body {
+      padding: 0;
+      margin: 0;
+    }
+
+    .desativar {
+      visibility: hidden;
+
+    }
+
+    /* conteiner */
+    .container {
+      height: 100vh;
+      width: 100vw;
+    }
+
+    /* conteudo */
+    .conteudo {
+
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+
+
+    }
+
+
+    /* desaparecer */
+    #desaparecer {
+      position: absolute;
+      height: 100vh;
+      width: 100vw;
+      background-color: black;
+      opacity: .5;
+    }
+
+    /* formulario */
+    #formulario {
+
+      position: absolute;
+      height: 80vh;
+      width: 50vw;
+      padding: 5%;
+      border-radius: 10px;
+      background-color: rgba(255, 255, 255, 0.981);
+      margin-top: 5%;
+      margin-left: 50%;
+      transform: translate(-50%);
+      display: grid;
+      gap: 10px;
+      text-align: center;
+      grid-template-areas:
+        "titulo titulo titulo titulo"
+        "tipo tipo tipo tipo"
+        "id grupo grupo grupo"
+        "nome nome nome nome"
+        "qtd-item apelido apelido apelido"
+        "branco branco branco branco"
+        "cadastrar cadastrar cancelar cancelar"
+      ;
+      box-sizing: border-box;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    select {
+      height: 40px;
+      border: 1px solid gray;
+      border-radius: 10px;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    select {
+      background-color: black;
+      color: aliceblue;
+      font-size: 16px;
+    }
+
+    .desabilitar {
+      opacity: .4;
+
+    }
+
+    #tipo {
+      grid-area: tipo;
+    }
+
+    #titulo-formulario {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 30px;
+      grid-area: titulo;
+      font-weight: bold;
+    }
+
+    #id-grupo {
+      grid-area: id;
+    }
+
+    #nome-grupo {
+      grid-area: grupo;
+    }
+
+    #nome-meta {
+      grid-area: nome;
+    }
+
+    #qtd-item {
+      grid-area: qtd-item;
+    }
+
+    #apelido {
+      grid-area: apelido;
+    }
+
+    #btn-adicionar {
+      grid-area: cadastrar;
+    }
+
+    .add-submetas {
+      height: 40px;
+      width: 40px;
+    }
+
+    .branco {
+      grid-area: branco;
+      height: 30px;
+      width: 300px;
+    }
+
+
+    #add-submetas:hover {
+      transition: .9s;
+      background-color: rgb(1, 73, 1);
+      box-shadow: rgba(0, 129, 13, 0.35) 0px 0px 15px;
+    }
+
+
+    /* iniciar */
+
+    .iniciar {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    #btn-iniciar {
+      border: 1px solid transparent;
+      border-radius: 3px;
+      background-color: green;
+      color: white;
+      font-size: 18px;
+      height: 30px;
+      width: 100px;
+      cursor: pointer;
+      transition: .5s;
+    }
+
+    #btn-iniciar:hover {
+      background-color: rgb(1, 73, 1);
+    }
+
+    #btn-cancelar {
+      grid-area: cancelar;
+    }
+
+
+
+
+    .btn-adicionar,
+    .btn-cancelar {
+      border-radius: 10px;
+      border: 1px solid transparent;
+      height: 40px;
+      color: aliceblue;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .btn-adicionar {
+      background-color: green;
+    }
+
+
+    .btn-adicionar:hover {
+      background-color: rgb(1, 93, 1);
+      color: white;
+    }
+
+    .btn-cancelar {
+      background-color: brown;
+    }
+
+    .btn-cancelar:hover {
+      background-color: rgb(123, 37, 37);
+      color: white;
+    }
+
+
+    #board-geral {
+      position: relative;
+    }
+
+
+    .accordion {
+      cursor: pointer;
+      border: solid 1.5px grey;
+      text-align: left;
+      outline: none;
+      background-color: sandybrown;
+      transition: 0.4s;
+      color: rgb(10, 4, 39);
+      margin-top: 5px;
+      margin-bottom: 3px;
+      max-width: 150px;
+    }
+
+    .accordion:hover {
+      background-color: rgb(249, 249, 132);
+    }
+
+    .grupo {
+      display: flex;
+      flex-wrap: wrap;
+      width: auto;
+      border: solid grey 1px;
+      border-radius: 10px;
+      padding: 10px;
+      margin: 10px;
+    }
+
+    .grupo legend {
+      font-size: 30px;
+      border: none;
+      margin: 0;
+      border: solid rgb(215, 17, 17);
+      border-radius: 15px;
+      text-align: center;
+    }
+
+    .panel {
+      display: none;
+      flex-direction: row;
+      flex-wrap: wrap;
+      background-color: white;
+      overflow: hidden;
+    }
+
+    .elementos {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .caixa {
+      display: flex;
+      flex-wrap: wrap;
+      border: solid grey 1px;
+      border-radius: 10px;
+      padding: 5px;
+      margin: 3px;
+    }
+
+    .caixa legend {
+      font-size: 10px;
+      display: block;
+      margin: 0;
+      padding: 0;
+      border: none;
+    }
+
+    .caixa label {
+      margin: 0;
+      padding: 0;
+      max-width: 30%;
+    }
+
+    .caixa label input {
+      margin: 0;
+    }
+
+    .itens {
+      margin: 0;
+      padding: 0;
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="conteudo">
+      <div id="desaparecer" class="desativar"></div>
+      <div id="formulario" class="desativar">
+
+        <h1 id="titulo-formulario">Criar meta</h1>
+        <select name="tipo" id="tipo">
+          <option value="grupo">Criar grupo</option>
+          <option value="tarefa">Criar tarefa</option>
+        </select>
+        <input type="number" name="id-grupo" id="id-grupo" placeholder="Id Grupo">
+        <input type="text" name="nome-grupo" id="nome-grupo" placeholder="Nome Grupo">
+        <input type="text" name="nome-meta" id="nome-meta" placeholder="Nome Tarefa">
+        <input type="number" min="1" max="7" name="qtd-item" id="qtd-item" placeholder="Quantidade de caixa">
+        <input type="text" name="apelido" id="apelido" placeholder="Apelido">
+        <div class="branco"></div>
+
+        <input type="button" value="Adicionar" class="btn-adicionar" id="btn-adicionar">
+        <input type="button" value="Cancelar" class="btn-cancelar" id="btn-cancelar">
+      </div>
+      <div class="iniciar">
+        <input type="submit" id="btn-iniciar" class="desativa" value="+">
+      </div>
+
+      <div class="conteudo-metas">
+      </div>
+      <div id="boardgeral" style="display:flex;flex-direction:row;flex-wrap:wrap;">
+      </div>
+
+
+    </div>
+  </div>
+
+
+  <script>
+    var caixa = '\n<label><input type="checkbox"><span class="checkmark"></span></label>\n';
+    var cxaux = "";
+
+    // constantes
+    const tipoAdd = document.querySelector("#tipo");
+    const idGrupo = document.querySelector("#id-grupo");
+    const nomeGrupo = document.querySelector("#nome-grupo");
+    const nomeMeta = document.querySelector("#nome-meta");
+    const qtdCaixa = document.querySelector("#qtd-item");
+    const ap = document.querySelector("#apelido");
+
+    let idGrupoAPP = document.querySelector("#id-grupo").value;
+    let nomeGrupoAdd = document.querySelector("#nome-grupo").value;
+    let nomeMetaAdd = document.querySelector("#nome-meta").value;
+    let qtdCaixaAdd = document.querySelector("#qtd-item").value;
+    let apAdd = document.querySelector("#apelido").value;
+
+    let adicionar = document.querySelector("#btn-adicionar");
+    let cancelar = document.querySelector("#btn-cancelar");
+    let btnIniciar = document.querySelector("#btn-iniciar");
+
+    grupos = new Array();
+    tarefas = new Array();
+
+
+    if (localStorage.gruposCriados) {
+      mostrar();
+    }
+
+
+    tipoAdd.addEventListener("change", () => {
+      let i = document.querySelector("#nome-grupo");
+      i.classList.toggle("desabilitar");
+
+      document.querySelector("#formulario").appendChild(i)
+      if (tipoAdd.value === "grupo") {
+        nomeGrupo.disabled = false;
+      } else {
+        nomeGrupo.disabled = true;
+      }
+    });
+
+
+    // functions
+
+    adicionar.addEventListener("click", () => {
+
+      idGrupoAPP = idGrupo.value;
+      nomeGrupoAdd = nomeGrupo.value;
+      nomeMetaAdd = nomeMeta.value;
+      qtdCaixaAdd = qtdCaixa.value;
+      apAdd = ap.value;
+
+      // localStorage
+      if (tipoAdd.value === "grupo") {
+        // grupos
+        if (localStorage.gruposCriados) {
+          grupos = JSON.parse(localStorage.getItem('gruposCriados'));
+        }
+
+        grupos.push({ idGrupoAPP, nomeGrupoAdd, nomeMetaAdd, qtdCaixaAdd, apAdd });
+        localStorage.setItem('gruposCriados', JSON.stringify(grupos));
+      } else {
+        // tarefas
+        if (localStorage.tarefasCriadas) {
+          tarefas = JSON.parse(localStorage.getItem('tarefasCriadas'));
+        }
+
+        tarefas.push({ nomeMetaAdd, qtdCaixaAdd, idGrupoAPP, apAdd });
+        localStorage.setItem('tarefasCriadas', JSON.stringify(tarefas));
+      }
+
+      mostrar();
+    });
+
+
+    function mostrar() {
+      // verificando o que deve ser inserindo
+    
+        let qbraiten = 1;
+        document.getElementById("boardgeral").innerHTML = " ";
+
+        let grupos = JSON.parse(localStorage.getItem('gruposCriados'));
+        for (let i in grupos) {
+          insereNoBody(grupos[i].idGrupoAPP, grupos[i].nomeGrupoAdd, grupos[i].nomeMetaAdd, grupos[i].qtdCaixaAdd, qbraiten, grupos[i].apAdd);
+        }
+    
+        let tarefas = JSON.parse(localStorage.getItem('tarefasCriadas'));
+        for (let i in tarefas) {
+          insereNoGrupo(tarefas[i].nomeMetaAdd, tarefas[i].qtdCaixaAdd, 1, tarefas[i].idGrupoAPP, tarefas[i].apAdd);
+        }
+      }
+
+    
+
+    cancelar.addEventListener("click", () => {
+      modal();
+    });
+
+
+    btnIniciar.addEventListener("click", () => {
+      modal();
+    });
+
+    // modal
+    function modal() {
+      var desaparecer = document.querySelector("#desaparecer");
+      desaparecer.classList.toggle("desativar");
+
+      var form = document.querySelector("#formulario");
+      form.classList.toggle("desativar");
+    }
+
+
+    //mostrar grupo
+    function insereNoBody(idgrup, grpMeta, nmMeta, qtditem, qbraiten, apelido) {
+      if (idgrup === '') {
+
+      }
+      else {
+
+        var grptag = "<fieldset class=\"grupo\" id=\"" + idgrup + "\"><legend>" + grpMeta;
+        grptag = grptag + "</legend>\n</fieldset>";
+
+
+        document.getElementById("boardgeral").innerHTML += grptag;
+
+        insereNoGrupo(nmMeta, qtditem, qbraiten, idgrup, apelido);
+        //gerar um numero de id de grupo, sequencial a quantidade de class "grupo"
+
+      }
+
+    }
+
+    // inserir no grupo
+    function insereNoGrupo(nomeMeta, quantidade, quebrar, idgrp, apld) {
+
+      if (idgrp === '') {
+
+      }
+      else {
+        var grptag2 = "<button class=\"accordion\">" + nomeMeta;
+        grptag2 += "</button>\n<div class=\"panel\"><div ";
+        grptag2 += "class=\"elementos\"></div></div>";
+
+        document.getElementById(idgrp).innerHTML += grptag2;
+        //Loop para inserir caixas de meta, em semanas, de acordo com a quantidade
+        if (quebrar == 1) {
+          for (i = 1; i <= quantidade; i++) {
+            cxaux += caixa;
+          }
+          document.getElementById(idgrp).innerHTML += "\n<fieldset class=\"caixa\"><legend>" + apld + "</legend>\n<div class=\"itens\">" + cxaux + "</div></fieldset>";
+        }
+        else {
+          for (i = 1; i <= quantidade; i++) {
+            cxaux += caixa;
+            if (i % quebrar == 0) {
+              document.getElementById(idgrp).innerHTML += "\n<fieldset class=\"caixa\"><legend>" + apld + " " + ('00' + ((i / 5))).slice(-2) + "</legend>\n<div class=\"itens\">" + cxaux + "</div></fieldset>";
+              cxaux = "";
+            }
+          }
+        }
+        cxaux = "";
+        accordion();
+      }
+    }
+
+    //funcao para funcionalidade do acordion
+    function accordion() {
+      var acc = document.getElementsByClassName("accordion");
+      var i;
+      for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+          this.classList.toggle("active");
+          var panel = this.nextElementSibling;
+          if (panel.style.display === "block") {
+            panel.style.display = "none";
+            panel.style.margin = "0";
+          } else {
+            panel.style.display = "block";
+            panel.style.margin = "0";
+          }
+        });
+      }
+    }
+  </script>
+
+</body>
+
+</html>
