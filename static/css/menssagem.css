@@ -1,0 +1,27 @@
+
+/* menssagem */
+.form-menssagem{
+    position: absolute;
+    bottom:13%;
+    height: auto;
+    width: 350px;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 240, 0.165);
+    color: blue;
+    border: 2px solid  rgba(21, 21, 252, 1);
+    transition: .5s;
+
+}
+
+#fechar-menssagem{
+    cursor: pointer;
+}
+
+.fechar{
+    
+    opacity: 0 !important;
+}
+

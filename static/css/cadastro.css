@@ -1,0 +1,109 @@
+:root {
+    --cor-borda: #ccc;
+    --cor-sombra: #ccc;
+    --cor-fundo: white;
+    --cor-font: rgb(21, 186,84);
+    --font:Arial, Helvetica, sans-serif;
+}
+
+/* container */
+.container {
+    background-color: var(--cor-fundo);
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--font);
+    
+}
+
+/* btn-to-back */
+.voltar{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    box-sizing: border-box;
+    display: flex;
+}
+
+#btn-voltar{
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+#btn-voltar img{
+    height: 30px;
+    width: 30px;
+}
+
+#btn-voltar p{
+    color: var(--cor-font);
+    text-decoration: none;
+    font-size: 18px;
+}
+
+
+
+/* formulario */
+.form-content {
+    height: 90vh;
+    width: 40vw;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 15px 1px var(--cor-sombra);
+    -moz-box-shadow: 0px 0px 15px 1px var(--cor-sombra);
+    box-shadow: 0px 0px 15px 1px var(--cor-sombra);
+}
+
+#titulo-cadastro{
+    font-size: 23px;
+    color: rgba(43, 43, 43, 0.667);
+}
+
+
+.input-cadastro{
+    height: 40px;
+    width: 87%;
+    font-size: 18px;
+    border:2px solid var(--cor-font);
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+
+#img-logo img{
+    height: 90px;
+    width: 90px;
+    margin-top: 50px;
+}
+
+#btn-cadastrar{
+    margin-top: 20px;
+    height: 40px;
+    width: 150px;
+    color: white;
+    font-size: 20px;
+    background-color: var(--cor-font);
+    border: 1px solid transparent;
+    border-radius: 10px;
+    box-sizing: border-box;
+    cursor:pointer;
+    transition: .3s;
+}
+
+#btn-cadastrar:hover{
+    background-color: rgb(24, 125, 63);
+}
+

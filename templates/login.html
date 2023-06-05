@@ -1,0 +1,70 @@
+<!-- <!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <form action="{{url_for('login')}}" method="post">
+        <input type="text" name="usuario" id="usuario" placeholder="Usuário" required>
+        <input type="text" name="senha" id="senha" placeholder="Senha" required>
+        <input type="submit" value="Logar" name="btn-login" id="btn-login" >
+    </form>
+    <a href="{{url_for('cadastro')}}">Cadastrar</a>
+    <script src="{{url_for('static', filename='js/login.js')}}"></script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metas</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/menssagem.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="capa">
+            <img src="{{url_for('static', filename='assets/img_login/img_logo_branco.png')}}" alt="logo metas">
+            <p>Metas</p>
+        </div>
+            <div class="form">
+                <h1 id="titulo-login">Login</h1>
+                <form action="{{url_for('login')}}" method="post">
+                    <div class="form-conteudo">
+                        <div class="logo-usuario">
+                            <div id="cabeca"></div>
+                            <div id="corpo"></div>
+                        </div>
+                        <input type="text" name="usuario" id="usuario" class="input-login" placeholder="Usuário" required>
+                        <input type="password" name="senha" id="senha" class="input-login" placeholder="Senha" required>
+                        <input type="submit" value="Logar" name="btn-login" id="btn-login">
+                        <a href="{{url_for('cadastro')}}" id="btn-cadastrar">Cadastrar</a>
+                    </div>
+                </form>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                {% for message in messages %}
+                
+              <!-- Mensagem  -->
+                   <div class="form-menssagem">
+                      <a id="fechar-menssagem">x</a>
+                      <p>{{message}}</p>
+                  </div> 
+              {% endfor %}
+              {% endif %}
+              {% endwith%}
+            </div>
+    </div>
+    <script src="{{url_for('static', filename='js/menssagem.js')}}"></script>
+</body>
+
+</html>

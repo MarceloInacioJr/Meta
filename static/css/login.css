@@ -1,0 +1,146 @@
+/* reset */
+
+body {
+    position: relative;
+    margin: 0;
+    padding-top: 0;
+}   
+
+
+/* variaveis */
+:root {
+    --cor-fundo: white;
+    --cor-font: rgb(21, 186, 85);
+    --tipo-font: Arial;
+}
+
+/* body */
+body {
+    font-family: var(--tipo-font);
+    background-color: var(--cor-fundo);
+    
+}
+
+
+/* container */
+.container {
+    height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    background-color: rgb(21, 186, 85);
+    box-sizing: border-box;
+}
+
+/* titulo */
+#titulo-login{
+    font-size: 40px;
+    color: #3e3e3ec8;
+
+}
+
+/* form */
+.form{
+    height: 100vh;
+    width: 50vw;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+}
+
+
+
+/* form-conteudo */
+.form-conteudo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.input-login{
+    height: 40px;
+    width: 20vw;
+    font-size: 20px;
+    color: #3e3e3e;
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    border: 2px solid var(--cor-font);
+}
+
+
+/* capa */
+.capa{
+    
+    height: 100vh;
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.capa p{
+    color: white;
+    font-size: 35px;
+}
+
+.logo-usuario{
+    height: 190px;
+    width: 190px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    gap: 10px;
+}
+
+#cabeca{
+    height: 30px;
+    width: 30px;
+    border-radius: 100%;
+    border: 10px solid var(--cor-font);
+}
+
+#corpo{
+    height: 30px;
+    width: 70px;
+    border-radius: 20px 20px 0  0;
+    border: 10px solid var(--cor-font);
+    border-bottom: 1px solid transparent;
+
+}
+
+/* btn-login */
+#btn-login{
+    height: 40px;
+    width: 150px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+    background-color: var(--cor-font);
+    cursor:pointer;
+    transition: .4s;
+}
+
+#btn-login:hover{
+    background-color: rgb(1, 175, 1);
+}
+
+#btn-cadastrar{
+    margin-top: 10px;
+    font-size: 20px;
+    color: var(--cor-font);
+    text-decoration: none;
+    transition: .5s;
+}
+
+#btn-cadastrar:hover{
+    color: green;
+}

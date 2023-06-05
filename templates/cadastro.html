@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metas</title>
+    <!-- <link rel="stylesheet" href="/static/css/login.css"> -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/menssagem.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/cadastro.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/reset.css')}}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="voltar">
+            <a id="btn-voltar" href="{{url_for('login')}}">
+                <img src="{{url_for('static', filename='assets/img_cadastro/img_back.png')}}" alt="img voltar">
+                <p>Voltar</p>
+            </a>
+            </div>
+        <div class="form">
+        <form action="{{url_for('cadastro')}}" method="post" autocomplete="off">
+            <div class="form-content">
+            <div id="img-logo">
+                <img src="{{url_for('static', filename='assets/img_cadastro/img_logo.png')}}" alt="">
+            </div>
+            <p id="titulo-cadastro">Cadastro</p>
+            <input type="text" name="nome" id="nome" class="input-cadastro" placeholder="Nome" required>
+            <input type="email" name="email" id="email" class="input-cadastro" placeholder="E-mail" required>
+            <input type="text" name="usuario" id="usuario" class="input-cadastro" placeholder="Usuário" required>
+            <input type="text" name="senha" id="senha" class="input-cadastro" placeholder="Senha" required>
+            <input type="submit" value="Cadastrar" name="cadastrar" id="btn-cadastrar">
+            </div>
+    
+    </div>
+        
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      {% for message in messages %}
+      
+    <!-- Mensagem  -->
+         <div class="form-menssagem">
+            <a id="fechar-menssagem">x</a>
+            <p>{{message}}</p>
+        </div> 
+    {% endfor %}
+    {% endif %}
+    {% endwith%}
+    
+    </div>
+    <script src="{{url_for('static', filename='js/menssagem.js')}}"></script>
+</body>
+
+</html>
