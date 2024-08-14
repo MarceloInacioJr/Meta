@@ -5,11 +5,11 @@ import psycopg2.extras
 
 app = Flask(__name__)
 # Conexão com banco de dados
-app.secret_key = '1234'
+app.secret_key = ''
 DB_HOST = "localhost"
 DB_NAME = "app"
 DB_USER = "postgres"
-DB_PASS = "1234"
+DB_PASS = ""
 
 conn = psycopg2.connect(dbname=DB_NAME, user=DB_USER, password=DB_PASS, host=DB_HOST)
 cursor = conn.cursor(cursor_factory=psycopg2.extras.DictCursor)
